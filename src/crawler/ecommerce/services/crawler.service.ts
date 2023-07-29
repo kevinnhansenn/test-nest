@@ -36,6 +36,7 @@ export abstract class CrawlerService {
     const browser = await puppeteer.launch({
       headless: this.debug ? false : 'new',
       devtools: this.debug,
+      executablePath: '/usr/bin/chromium-browser',
     });
 
     // Create a new page
