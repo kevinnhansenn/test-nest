@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
-import { Page } from 'puppeteer';
+import { executablePath, Page } from 'puppeteer';
 import { ScrapperResponse, SearchResult } from '../types/crawler.types';
 
 const plugin = StealthPlugin();
@@ -36,7 +36,7 @@ export abstract class CrawlerService {
     const browser = await puppeteer.launch({
       headless: this.debug ? false : 'new',
       devtools: this.debug,
-      executablePath: '/usr/bin/chromium-browser',
+      executablePath: executablePath(),
     });
 
     // Create a new page
